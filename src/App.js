@@ -22,36 +22,43 @@ const App = () => {
     setLoggedIn(localStorage.getItem("isLoggedIn"));
   }, []);
 
+ 
+
   return (
-    <Router>
-      {isLoggedIn ? <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />:""}
-      
-      <Routes>
-        <Route
-          path="/"
-          element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/listings"
-          element={isLoggedIn ? <Listing /> : <Navigate to="/login" />}
-        />
-        <Route path="/listings-local" element={<ListingFromLocal />} />
-        <Route
-          path="/details/:id"
-          element={isLoggedIn ? <MealData /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/details-local/:id"
-          element={isLoggedIn ? <MealDataLocal /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/add-recipe"
-          element={isLoggedIn ? <AddNewRecipe /> : <Navigate to="/login" />}
-        />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
-      </Routes>
-    </Router>
+      <Router>
+        {/* {isLoggedIn ? (
+          <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
+        ) : (
+          ""
+        )} */}
+        <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
+
+        <Routes>
+          <Route
+            path="/"
+            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/listings"
+            element={isLoggedIn ? <Listing /> : <Navigate to="/login" />}
+          />
+          <Route path="/listings-local" element={<ListingFromLocal />} />
+          <Route
+            path="/details/:id"
+            element={isLoggedIn ? <MealData /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/details-local/:id"
+            element={isLoggedIn ? <MealDataLocal /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/add-recipe"
+            element={isLoggedIn ? <AddNewRecipe /> : <Navigate to="/login" />}
+          />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
+        </Routes>
+      </Router>
   );
 };
 
