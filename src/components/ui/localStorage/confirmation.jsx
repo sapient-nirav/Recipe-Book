@@ -1,12 +1,23 @@
 import React from "react";
-
+import { useTheme } from "../../../context/ThemeContext";
 const Confirm = ({ onConfirm, onCancel }) => {
+  const { isDarkMode } = useTheme();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="relative w-full max-w-md mx-auto my-3 sm:max-w-sm">
-        <div className="relative flex flex-col w-full bg-slate-100 border-0 rounded-lg shadow-lg">
+        <div
+          className={`relative flex flex-col w-full border-0 rounded-lg shadow-lg bg-${
+            isDarkMode ? "white" : "black"
+          } `}
+        >
           <div className="flex items-start justify-between p-2 border-solid rounded-t">
-            <h3 className="text-2xl font-semibold">Confirmation</h3>
+            <h3
+              className={`text-${
+                isDarkMode ? "black" : "white"
+              } text-2xl font-semibold`}
+            >
+              Confirmation
+            </h3>
             <button
               className="p-1 border-0 text-gray-600 float-right text-2xl font-bold hover:text-red-400"
               onClick={onCancel}

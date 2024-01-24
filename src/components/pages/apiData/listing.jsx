@@ -41,7 +41,7 @@ const Listing = () => {
 
   const { isDarkMode } = useTheme();
   return (
-    <div>
+    <div className={`bg-${isDarkMode ? "white": "black"}`}>
       <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "white" : "black"} shadow-2xl`}>
         {recipe
           ? recipe.map((item, index) => (

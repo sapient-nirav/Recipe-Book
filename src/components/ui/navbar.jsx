@@ -31,11 +31,11 @@ const Navbar = (props) => {
   const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
-    <div className="App">
+    <div className="App mb-[92px]">
       <nav
         className={`flex justify-between items-center text-xl border-gray-200 bg-${
           isDarkMode ? "white" : "black"
-        } shadow-lg p-4`}
+        } shadow-lg p-4 fixed w-full top-0 z-50`}
       >
         <Link to="/" className="ml-5">
           <img src={logo} alt="logo" className="w-14 rounded-full" />
@@ -95,12 +95,13 @@ const Navbar = (props) => {
         <div className="relative">
           <button
             className={`p-2 rounded-full ${
-              isDarkMode ? "bg-gray-500 text-white" : "bg-yellow-200 text-black"
-            }`}
+              isDarkMode ? "bg-black text-white" : "bg-white text-black"
+            } transition-all transform hover:rotate-180 duration-500 ease-in-out`}
             onClick={toggleDarkMode}
           >
             {isDarkMode ? "☀️" : "🌙"}
           </button>
+
           <button
             className={`rounded-md mx-2 px-4 py-2 text-${
               isDarkMode ? "black" : "white"

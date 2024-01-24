@@ -48,7 +48,7 @@ const Home = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
-    <div>
+    <div className={`bg-${isDarkMode ? "white": "black"}`}>
       <SearchBar
         isLoading={isLoading}
         query={query}

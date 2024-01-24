@@ -25,21 +25,25 @@ const RecipeList = () => {
   };
   const { isDarkMode } = useTheme();
   return (
-    <div
-      className={`flex flex-wrap mx-16 bg-${isDarkMode ? "white" : "black"} shadow-2xl`}
-    >
-      {recipes.length > 0 ? (
-        recipes.map((item, index) => (
-          <RecipeCardLocal
-            key={item.id}
-            recipe={item}
-            onDelete={handleDelete}
-            onUpdate={handleUpdate}
-          />
-        ))
-      ) : (
-        <p>No recipes to display...</p>
-      )}
+    <div className={`bg-${isDarkMode ? 'white':'black'}`}>
+      <div
+        className={`flex flex-wrap mx-16 bg-${
+          isDarkMode ? "white" : "black"
+        } shadow-2xl`}
+      >
+        {recipes.length > 0 ? (
+          recipes.map((item, index) => (
+            <RecipeCardLocal
+              key={item.id}
+              recipe={item}
+              onDelete={handleDelete}
+              onUpdate={handleUpdate}
+            />
+          ))
+        ) : (
+          <p>No recipes to display...</p>
+        )}
+      </div>
     </div>
   );
 };
