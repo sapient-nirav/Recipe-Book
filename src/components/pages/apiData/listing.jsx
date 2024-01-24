@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useTheme } from "../../../context/ThemeContext";
 import RecipeCard from "../../ui/apiData/recipeCard";
 const api = process.env.REACT_APP_API;
 
@@ -38,9 +39,10 @@ const Listing = () => {
     searchRecipe();
   }, [query]);
 
+  const { isDarkMode, toggleDarkMode } = useTheme();
   return (
     <div>
-      <div className="flex flex-wrap mx-16">
+      <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}>
         {recipe
           ? recipe.map((item, index) => (
               <RecipeCard key={item.idMeal} recipe={item} />

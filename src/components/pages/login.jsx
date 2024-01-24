@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/3.jpg";
+import { useTheme } from "../../context/ThemeContext";
 
 const Login = ({ onLoginStatusChange, setLoggedIn }) => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
     email: "",
     password: "",
   });
+
+  const { isDarkMode } = useTheme();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,17 +65,17 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black bg-opacity-5">
+    <div className={`min-h-screen flex items-center justify-center bg-${isDarkMode ? 'slate-50' : 'black'} bg-opacity-5`}>
       <img src={logo} alt="alt" className="mr-10 rounded-full w-[500px]" />
 
-      <div className="bg-slate-50 p-8 rounded-xl shadow-lg  w-96">
-        <h1 className="text-2xl font-semibold mb-4">Login To Recipe Book</h1>
+      <div className={`bg-${isDarkMode ? 'slate-50' : 'black'} p-8 rounded-xl shadow-lg  w-96`}>
+        <h1 className={`text-${isDarkMode ? 'black' : 'white'} text-2xl font-semibold mb-4`}>Login To Recipe Book</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-gray-700 text-sm font-medium"
+              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
             >
               E-mail
             </label>
@@ -92,7 +95,7 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-gray-700 text-sm font-medium"
+              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
             >
               Password
             </label>
@@ -109,11 +112,11 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
             />
             <div className="text-red-500 text-sm italic">{errors.password}</div>
           </div>
-          <div className="mb-4 italic">
+          <div className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium mb-4 italic`}>
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-blue-500 font-medium hover:underline"
+              className={`text-${isDarkMode ? 'blue-500' : 'blue-500'} font-medium hover:underline`}
             >
               Register
             </Link>
@@ -121,7 +124,7 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 mx-auto flex text-white p-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 font-medium"
+            className={`bg-${isDarkMode ? 'blue-500' : 'blue-500'} mx-auto flex text-white p-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 font-medium`}
           >
             Login
           </button>

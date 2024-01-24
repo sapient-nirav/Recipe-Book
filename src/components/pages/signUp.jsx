@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/2.jpg";
-
+import { useTheme } from "../../context/ThemeContext";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -76,17 +76,32 @@ const RegistrationForm = () => {
       }
     }
   };
+  const { isDarkMode } = useTheme();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black bg-opacity-5">
-      <div className="bg-slate-50 p-8 rounded-xl shadow-lg w-96">
-        <h1 className="text-2xl font-semibold mb-4">Register To Recipe Book</h1>
+    <div
+      className={`min-h-screen flex items-center justify-center bg-${
+        isDarkMode ? "slate-50" : "black"
+      } bg-opacity-5`}
+    >
+      <div
+        className={`bg-${
+          isDarkMode ? "slate-50" : "black"
+        } p-8 rounded-xl shadow-lg  w-96`}
+      >
+        <h1
+          className={`text-${
+            isDarkMode ? "black" : "white"
+          } text-2xl font-semibold mb-4`}
+        >
+          Register To Recipe Book
+        </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="username"
-              className="block text-gray-700 text-sm font-medium"
+              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
             >
               Username
             </label>
@@ -106,7 +121,7 @@ const RegistrationForm = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-gray-700 text-sm font-medium"
+              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
             >
               E-mail
             </label>
@@ -126,7 +141,7 @@ const RegistrationForm = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-gray-700 text-sm font-medium"
+              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
             >
               Password
             </label>
@@ -143,7 +158,7 @@ const RegistrationForm = () => {
             />
             <div className="text-red-500 text-sm italic">{errors.password}</div>
           </div>
-          <div className="mb-4 italic">
+          <div className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium mb-4 italic`}>
             Already have an account?{" "}
             <Link
               to="/login"

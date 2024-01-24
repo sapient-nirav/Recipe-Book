@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RecipeCardLocal from "../../ui/localStorage/recipeCardLocal";
+import { useTheme } from "../../../context/ThemeContext";
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -22,8 +23,11 @@ const RecipeList = () => {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setRecipes(updatedRecipes);
   };
+  const { isDarkMode, toggleDarkMode } = useTheme();
   return (
-    <div className="flex flex-wrap mx-16">
+    <div
+      className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}
+    >
       {recipes.length > 0 ? (
         recipes.map((item, index) => (
           <RecipeCardLocal

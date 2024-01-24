@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RecipeCard from "../../ui/apiData/recipeCard";
 import SearchBar from "../../ui/searchbar";
+import { useTheme } from "../../../context/ThemeContext";
 // import axios from "axios";
 // const api = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const api = process.env.REACT_APP_API;
@@ -43,6 +44,8 @@ const Home = () => {
     event.preventDefault();
     searchRecipe();
   };
+  
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
     <div>
@@ -52,7 +55,7 @@ const Home = () => {
         setQuery={setQuery}
         handleSubmit={handleSubmit}
       />
-      <div className="flex flex-wrap mx-12">
+      <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}>
         {!isLoading && recipe.length > 0 ? (
           recipe.map((item, index) => (
             <RecipeCard key={item.idMeal} recipe={item} />

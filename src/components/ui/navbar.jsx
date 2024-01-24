@@ -2,24 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaCog } from "react-icons/fa";
 import logo from "../../assets/logo.jpg";
-import ThemeBtn from "./themeButton";
-import { ThemeProvider } from "../../context/theme";
+import { useTheme } from "../../context/ThemeContext";
 
 const Navbar = (props) => {
   const { isLoggedIn, setLoggedIn } = props;
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // console.log("dropdownOpen: ", dropdownOpen);
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
   const closeDropdown = () => {
     setDropdownOpen(false);
   };
-
-  // const isLoggedIn = localStorage.getItem("isLoggedIn");
-  // console.log("isLoggedIn: ", isLoggedIn)
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
@@ -33,107 +28,112 @@ const Navbar = (props) => {
     }
   }, [isLoggedIn]);
 
-  const [themeMode, setThemeMode] = useState("light");
-  const darkTheme = () => {
-    setThemeMode("dark");
-  };
-  const lightTheme = () => {
-    setThemeMode("light");
-  };
-  useEffect(() => {
-    document.querySelector("html").classList.remove("dark", "light");
-    document.querySelector("html").classList.add(themeMode);
-  }, [themeMode]);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
-    <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-      <div className="App">
-        <nav className="flex justify-between items-center text-xl border-gray-200 bg-gray-50 shadow-lg">
-          <Link to="/" className="ml-5">
-            <img src={logo} alt="logo" className="w-14" />
-          </Link>
-          <div className="p-4">
-            <ul className="flex flex-row font-medium rounded-lg bg-gray-50">
+    <div className="App">
+      <nav
+        className={`flex justify-between items-center text-xl border-gray-200 bg-${
+          isDarkMode ? "gray-800" : "black"
+        } shadow-lg p-4`}
+      >
+        <Link to="/" className="ml-5">
+          <img src={logo} alt="logo" className="w-14 rounded-full" />
+        </Link>
+        <div className={`p-4 bg-${isDarkMode ? "gray-800" : "black"}`}>
+          <ul className={`flex flex-row font-medium rounded-lg bg-gray-50 bg-${isDarkMode ? "gray-800" : "black"}`}>
+            <li>
+              <Link
+                to="/"
+                className={`block mx-5 py-2 md:p-0 md:hover:text-blue-700 `}
+                aria-current="page"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/listings"
+                className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700"
+              >
+                Listings API
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/listings-local"
+                className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700"
+              >
+                Listing Local
+              </Link>
+            </li>
+            {isLoggedIn && (
               <li>
                 <Link
-                  to="/"
-                  className="block mx-5 py-2 md:p-0 md:hover:text-blue-700"
-                  aria-current="page"
+                  to="/add-recipe"
+                  className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:text-blue-700"
                 >
-                  Home
+                  +Add New Recipe
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/listings"
-                  className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700"
-                >
-                  Listings API
-                </Link>
-              </li>
-              <li>
+            )}
+          </ul>
+        </div>
+
+        <div className="relative">
+          <button
+            className={`rounded-md mx-2 px-4 py-2 text-${
+              isDarkMode ? "black" : "white"
+            } font-medium`}
+            onClick={toggleDarkMode}
+          >
+            {isDarkMode ? "Light" : "Dark"}
+          </button>
+          <button
+            className={`rounded-md mx-2 px-4 py-2 text-${
+              isDarkMode ? "black" : "white"
+            } hover:text-${isDarkMode ? "blue-400" : "gray-900"} font-medium`}
+            onClick={toggleDropdown}
+          >
+            <FaCog />
+          </button>
+          {dropdownOpen && (
+            <div className="absolute right-0 mt-3 mr-4 bg-white border rounded-md shadow-lg">
+              {isLoggedIn ? (
                 <Link
                   to="/listings-local"
-                  className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700"
+                  className={`block px-4 py-2 text-gray-900 hover:bg-${
+                    isDarkMode ? "gray-700" : "gray-500"
+                  } hover:text-white font-medium hover:rounded-lg`}
+                  onClick={handleLogout}
                 >
-                  Listing Local
+                  Logout
                 </Link>
-              </li>
-              {isLoggedIn && (
-                <li>
+              ) : (
+                <>
                   <Link
-                    to="/add-recipe"
-                    className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:text-blue-700"
+                    to="/register"
+                    className={`block px-4 py-2 text-gray-900  hover:bg-gray-300 font-medium hover:rounded-lg`}
+                    onClick={closeDropdown}
                   >
-                    +Add New Recipe
+                    Register
                   </Link>
-                </li>
+                  <Link
+                    to="/login"
+                    className={`block px-4 py-2 text-gray-900 hover:bg-${
+                      isDarkMode ? "gray-700" : "gray-500"
+                    } hover:text-white font-medium hover:rounded-lg`}
+                    onClick={toggleDropdown}
+                  >
+                    Login
+                  </Link>
+                </>
               )}
-            </ul>
-          </div>
-
-          <div className="relative">
-            <ThemeBtn />
-            <button
-              className="rounded-md mx-2 px-4 py-2 text-gray-700 hover:text-gray-900 font-medium"
-              onClick={toggleDropdown}
-            >
-              <FaCog />
-            </button>
-            {dropdownOpen && (
-              <div className="absolute  right-0 mt-3 mr-4 bg-white border rounded-md shadow-lg">
-                {isLoggedIn ? (
-                  <Link
-                    to="/listings-local"
-                    className="block px-4 py-2 text-gray-900 hover:bg-gray-700 hover:text-white font-medium hover:rounded-lg"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </Link>
-                ) : (
-                  <>
-                    <Link
-                      to="/register"
-                      className="block px-4 py-2 text-gray-900 hover:bg-gray-500 hover:text-white font-medium hover:rounded-lg"
-                      onClick={closeDropdown}
-                    >
-                      Register
-                    </Link>
-                    <Link
-                      to="/login"
-                      className="block px-4 py-2 text-gray-900 hover:bg-gray-700 hover:text-white font-medium hover:rounded-lg"
-                      onClick={toggleDropdown}
-                    >
-                      Login
-                    </Link>
-                  </>
-                )}
-              </div>
-            )}
-          </div>
-        </nav>
-      </div>
-    </ThemeProvider>
+            </div>
+          )}
+        </div>
+      </nav>
+    </div>
   );
 };
 
