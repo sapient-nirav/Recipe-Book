@@ -131,7 +131,7 @@ const Navbar = (props) => {
                   </Link>
                   <Link
                     to="/login"
-                    className={`block px-4 py-2 text-gray-900 hover:bg-gray-500 hover:font-medium hover:rounded-lg`}
+                    className={`block px-4 py-2 text-gray-900 hover:bg-gray-500 font-medium hover:rounded-lg`}
                     onClick={toggleDropdown}
                   >
                     Login

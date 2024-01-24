@@ -65,70 +65,100 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center bg-${isDarkMode ? 'slate-50' : 'black'} bg-opacity-5`}>
-      <img src={logo} alt="alt" className="mr-10 rounded-full w-[500px]" />
+    <div className={` bg-${isDarkMode ? "slate-500" : "black"}`}>
+      <div
+        className={`min-h-screen flex items-center justify-center bg-${
+          isDarkMode ? "slate-50" : "black"
+        } bg-opacity-5`}
+      >
+        <img src={logo} alt="alt" className="mr-10 rounded-full w-[500px]" />
 
-      <div className={`bg-${isDarkMode ? 'slate-50' : 'black'} p-8 rounded-xl shadow-lg  w-96`}>
-        <h1 className={`text-${isDarkMode ? 'black' : 'white'} text-2xl font-semibold mb-4`}>Login To Recipe Book</h1>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
-            >
-              E-mail
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              placeholder="Enter your email"
-              onChange={handleChange}
-              className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
-                errors.email && "border-red-500"
-              }`}
-            />
-            <div className="text-red-500 text-sm italic">{errors.email}</div>
-          </div>{" "}
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium`}
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              placeholder="Enter your password"
-              onChange={handleChange}
-              className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
-                errors.password && "border-red-500"
-              }`}
-            />
-            <div className="text-red-500 text-sm italic">{errors.password}</div>
-          </div>
-          <div className={`block text-${isDarkMode ? 'gray-50' :'white'} text-sm font-medium mb-4 italic`}>
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className={`text-${isDarkMode ? 'blue-500' : 'blue-500'} font-medium hover:underline`}
-            >
-              Register
-            </Link>
-            .
-          </div>
-          <button
-            type="submit"
-            className={`bg-${isDarkMode ? 'blue-500' : 'blue-500'} mx-auto flex text-white p-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 font-medium`}
+        <div
+          className={`bg-${
+            isDarkMode ? "slate-50" : "black"
+          } p-8 rounded-xl shadow-lg border-2 w-96`}
+        >
+          <h1
+            className={`text-${
+              isDarkMode ? "black" : "white"
+            } text-2xl font-semibold mb-4`}
           >
-            Login
-          </button>
-        </form>
+            Login To Recipe Book
+          </h1>
+
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className={`block text-${
+                  isDarkMode ? "gray-50" : "white"
+                } text-sm font-medium`}
+              >
+                E-mail
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                placeholder="Enter your email"
+                onChange={handleChange}
+                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                  errors.email && "border-red-500"
+                }`}
+              />
+              <div className="text-red-500 text-sm italic">{errors.email}</div>
+            </div>{" "}
+            <div className="mb-4">
+              <label
+                htmlFor="password"
+                className={`block text-${
+                  isDarkMode ? "gray-50" : "white"
+                } text-sm font-medium`}
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                placeholder="Enter your password"
+                onChange={handleChange}
+                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                  errors.password && "border-red-500"
+                }`}
+              />
+              <div className="text-red-500 text-sm italic">
+                {errors.password}
+              </div>
+            </div>
+            <div
+              className={`block text-${
+                isDarkMode ? "gray-50" : "white"
+              } text-sm font-medium mb-4 italic`}
+            >
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className={`text-${
+                  isDarkMode ? "blue-500" : "blue-500"
+                } font-medium hover:underline`}
+              >
+                Register
+              </Link>
+              .
+            </div>
+            <button
+              type="submit"
+              className={`bg-${
+                isDarkMode ? "blue-500" : "blue-500"
+              } mx-auto flex text-white p-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 font-medium`}
+            >
+              Login
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
