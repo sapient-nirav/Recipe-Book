@@ -104,7 +104,7 @@ const Navbar = (props) => {
           <button
             className={`rounded-md mx-2 px-4 py-2 text-${
               isDarkMode ? "black" : "white"
-            } hover:text-${isDarkMode ? "blue-400" : "gray-900"} font-medium`}
+            } `}
             onClick={toggleDropdown}
           >
             <FaCog />
