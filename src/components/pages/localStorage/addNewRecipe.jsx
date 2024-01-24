@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import { useTheme } from "../../../context/ThemeContext";
 
 const AddNewRecipe = () => {
   const navigate = useNavigate();
@@ -85,174 +86,178 @@ const AddNewRecipe = () => {
     }
   };
 
-  return (
-    <div className="container mx-auto mt-2">
-      <form className="max-w-xl mx-auto shadow-lg p-8 bg-slate-100 rounded-lg">
-        <div className="mb-3">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 text-lg font-bold mb-2"
-          >
-            Name
-          </label>
-          <input
-            id="name"
-            placeholder="Recipe Name Here"
-            name="name"
-            value={recipe.name}
-            onChange={handleInputChange}
-            type="text"
-            className={`border  w-full py-2 px-3 rounded-lg ${
-              errors.name ? "border-rose-500" : ""
-            }`}
-          />
-          {errors.name && (
-            <p className="text-rose-500 text-sm italic">
-              Please enter name of the recipe here.
-            </p>
-          )}
-        </div>
+  const { isDarkMode } = useTheme();
 
-        <div className="mb-3">
-          <label
-            htmlFor="category"
-            className="block text-gray-700 text-lg font-bold mb-2"
-          >
-            Category{" "}
-          </label>
-          <select
-            name="category"
-            id="category"
-            value={recipe.category}
-            onChange={handleInputChange}
-            className={`border  w-full py-2 px-3 rounded-lg ${
-              errors.category ? "border-rose-500" : ""
-            }`}
-          >
-            {foodCategories.map((category) => (
-              <option
-                key={category.value}
-                value={category.value}
-                className="border rounded p-2 hover:bg-gray-50 focus:bg-gray-50"
-              >
-                {category.label}
-              </option>
-            ))}
-          </select>
-          {errors.category && (
-            <p className="text-rose-500 text-sm italic">
-              Please enter category of the recipe here.
-            </p>
-          )}
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="ingredients"
-            className="block text-gray-700 text-lg font-bold mb-2"
-          >
-            Ingredients
-          </label>
-          <textarea
-            name="ingredients"
-            id="ingredients"
-            placeholder="Recipe Ingredients"
-            className={` border rounded-lg w-full py-2 px-3  ${
-              errors.ingredients ? "border-rose-500" : ""
-            }`}
-            cols="30"
-            rows="3"
-            value={recipe.ingredients}
-            onChange={handleInputChange}
-          />
-          {errors.ingredients && (
-            <p className="text-rose-500 text-sm italic">
-              Please Enter Ingredients.
-            </p>
-          )}
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="instructions"
-            className="block text-gray-700 text-lg font-bold mb-2"
-          >
-            Instructions
-          </label>
-          <textarea
-            name="instructions"
-            id="instructions"
-            cols="30"
-            rows="3"
-            placeholder="Recipe Instructions"
-            className={` border rounded-lg w-full py-2 px-3  ${
-              errors.instructions ? "border-rose-500" : ""
-            }`}
-            value={recipe.instructions}
-            onChange={handleInputChange}
-          />
-          {errors.instructions && (
-            <p className="text-rose-500 text-sm italic">
-              Please Enter Instructions.
-            </p>
-          )}
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="youtubeLink"
-            className="block text-gray-700 text-lg font-bold mb-2"
-          >
-            YouTube Link
-          </label>
-          <input
-            id="youtubeLink"
-            placeholder="Recipe YouTube Link"
-            name="youtubeLink"
-            value={recipe.youtubeLink}
-            onChange={handleInputChange}
-            type="text"
-            className={`border rounded-lg w-full py-2 px-3 ${
-              errors.youtubeLink ? "border-rose-500" : ""
-            }`}
-          />
-          {errors.youtubeLink && (
-            <p className="text-rose-500 text-sm italic">
-              Please enter YouTube link of the recipe here.
-            </p>
-          )}
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="imageLink"
-            className="block text-gray-700 text-lg font-bold mb-2"
-          >
-            Image Link
-          </label>
-          <input
-            id="imageLink"
-            placeholder="Recipe Image Link"
-            name="imageLink"
-            value={recipe.imageLink}
-            onChange={handleInputChange}
-            type="text"
-            className={`border rounded-lg w-full py-2 px-3 ${
-              errors.imageLink ? "border-rose-500" : ""
-            }`}
-          />
-          {errors.imageLink && (
-            <p className="text-rose-500 text-sm italic">
-              Please enter image of the recipe here.
-            </p>
-          )}
-        </div>
-        <div className="flex items-center justify-center">
-          <button
-            className="bg-[#065f46] hover:bg-[#d97706] text-white font-bold py-2 px-4 rounded"
-            onClick={handleSubmitBtn}
-            type="submit"
-          >
-            Add Recipe
-          </button>
-        </div>
-      </form>
+  return (
+    <div className={`bg-${isDarkMode ? "white" : "black"} shadow-2xl`}>
+      <div className={`container mx-auto `}>
+        <form className="max-w-xl mx-auto shadow-lg p-8 bg-slate-100 rounded-lg">
+          <div className="mb-3">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-lg font-bold mb-2"
+            >
+              Name
+            </label>
+            <input
+              id="name"
+              placeholder="Recipe Name Here"
+              name="name"
+              value={recipe.name}
+              onChange={handleInputChange}
+              type="text"
+              className={`border  w-full py-2 px-3 rounded-lg ${
+                errors.name ? "border-rose-500" : ""
+              }`}
+            />
+            {errors.name && (
+              <p className="text-rose-500 text-sm italic">
+                Please enter name of the recipe here.
+              </p>
+            )}
+          </div>
+
+          <div className="mb-3">
+            <label
+              htmlFor="category"
+              className="block text-gray-700 text-lg font-bold mb-2"
+            >
+              Category{" "}
+            </label>
+            <select
+              name="category"
+              id="category"
+              value={recipe.category}
+              onChange={handleInputChange}
+              className={`border  w-full py-2 px-3 rounded-lg ${
+                errors.category ? "border-rose-500" : ""
+              }`}
+            >
+              {foodCategories.map((category) => (
+                <option
+                  key={category.value}
+                  value={category.value}
+                  className="border rounded p-2 hover:bg-gray-50 focus:bg-gray-50"
+                >
+                  {category.label}
+                </option>
+              ))}
+            </select>
+            {errors.category && (
+              <p className="text-rose-500 text-sm italic">
+                Please enter category of the recipe here.
+              </p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="ingredients"
+              className="block text-gray-700 text-lg font-bold mb-2"
+            >
+              Ingredients
+            </label>
+            <textarea
+              name="ingredients"
+              id="ingredients"
+              placeholder="Recipe Ingredients"
+              className={` border rounded-lg w-full py-2 px-3  ${
+                errors.ingredients ? "border-rose-500" : ""
+              }`}
+              cols="30"
+              rows="3"
+              value={recipe.ingredients}
+              onChange={handleInputChange}
+            />
+            {errors.ingredients && (
+              <p className="text-rose-500 text-sm italic">
+                Please Enter Ingredients.
+              </p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="instructions"
+              className="block text-gray-700 text-lg font-bold mb-2"
+            >
+              Instructions
+            </label>
+            <textarea
+              name="instructions"
+              id="instructions"
+              cols="30"
+              rows="3"
+              placeholder="Recipe Instructions"
+              className={` border rounded-lg w-full py-2 px-3  ${
+                errors.instructions ? "border-rose-500" : ""
+              }`}
+              value={recipe.instructions}
+              onChange={handleInputChange}
+            />
+            {errors.instructions && (
+              <p className="text-rose-500 text-sm italic">
+                Please Enter Instructions.
+              </p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="youtubeLink"
+              className="block text-gray-700 text-lg font-bold mb-2"
+            >
+              YouTube Link
+            </label>
+            <input
+              id="youtubeLink"
+              placeholder="Recipe YouTube Link"
+              name="youtubeLink"
+              value={recipe.youtubeLink}
+              onChange={handleInputChange}
+              type="text"
+              className={`border rounded-lg w-full py-2 px-3 ${
+                errors.youtubeLink ? "border-rose-500" : ""
+              }`}
+            />
+            {errors.youtubeLink && (
+              <p className="text-rose-500 text-sm italic">
+                Please enter YouTube link of the recipe here.
+              </p>
+            )}
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="imageLink"
+              className="block text-gray-700 text-lg font-bold mb-2"
+            >
+              Image Link
+            </label>
+            <input
+              id="imageLink"
+              placeholder="Recipe Image Link"
+              name="imageLink"
+              value={recipe.imageLink}
+              onChange={handleInputChange}
+              type="text"
+              className={`border rounded-lg w-full py-2 px-3 ${
+                errors.imageLink ? "border-rose-500" : ""
+              }`}
+            />
+            {errors.imageLink && (
+              <p className="text-rose-500 text-sm italic">
+                Please enter image of the recipe here.
+              </p>
+            )}
+          </div>
+          <div className="flex items-center justify-center">
+            <button
+              className="bg-[#065f46] hover:bg-[#d97706] text-white font-bold py-2 px-4 rounded"
+              onClick={handleSubmitBtn}
+              type="submit"
+            >
+              Add Recipe
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

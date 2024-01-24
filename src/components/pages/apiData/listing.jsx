@@ -39,7 +39,7 @@ const Listing = () => {
     searchRecipe();
   }, [query]);
 
-  const { isDarkMode, toggleDarkMode } = useTheme();
+  const { isDarkMode } = useTheme();
   return (
     <div>
       <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}>

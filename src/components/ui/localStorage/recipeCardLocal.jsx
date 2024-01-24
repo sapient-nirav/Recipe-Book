@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Confirm from "./confirmation";
 import UpdateForm from "./updateForm";
+import {useTheme} from '../../../context/ThemeContext'
 const RecipeCardLocal = (props) => {
   const navigate = useNavigate();
   const { recipe, onDelete, onUpdate } = props;
@@ -67,22 +68,23 @@ const RecipeCardLocal = (props) => {
     onUpdate(updatedRecipe);
     setShowUpdate(false);
   };
+  const { isDarkMode } = useTheme();
 
   return (
-    <div className="flex flex-row sm:flex-col shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg ">
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+    <div className={`flex flex-row sm:flex-col bg-${isDarkMode ? "gray-800" : "black"} shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg`}>
+      <div className={` max-w-sm bg-white border border-gray-200 rounded-lg shadow`}>
         <Link
           to={isLoggedIn ? `/details-local/${id}` : "/login"}
           className="block"
         >
           <img src={imageLink} alt="ImageLink" className="rounded-t-lg" />
         </Link>
-        <div className="p-5">
+        <div className={`bg-${isDarkMode ? "white" : "black"} p-5`}>
           <Link to={isLoggedIn ? `/details-local/${id}` : "/login"}>
-            <h5 className="mb-2 text-2xl font-bold text-gray-900">
+            <h5 className={`mb-2 text-2xl font-bold text-gray-900 text-${isDarkMode ? "black" : "white"}`}>
               Name: {name}
             </h5>
-            <p className="mb-3 font-normal text-gray-700 ">
+            <p className={`text-${isDarkMode ? "black" : "white"} mb-3 font-normal text-gray-700 `}>
               Category: {category}
             </p>
           </Link>

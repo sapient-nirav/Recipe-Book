@@ -1,19 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../../context/ThemeContext";
 
 const RecipeCard = (props) => {
   const { recipe } = props;
   const { idMeal, strMeal, strCategory, strMealThumb } = recipe;
+  
+  const { isDarkMode } = useTheme();
 
   return (
     <Link to={`/details/${idMeal}`} className="flex  flex-row shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg">
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
         <img className="rounded-t-lg" src={strMealThumb} alt={strMeal} />
-        <div className="p-5">
-          <h5 className="mb-2 text-2xl font-bold text-gray-900">
+        <div className={`bg-${isDarkMode ? "white" : "black"} p-5`}>
+          <h5 className={`mb-2 text-2xl font-bold text-gray-900 text-${isDarkMode ? "black" : "white"}`}>
             Name: {strMeal}
           </h5>
-          <p className="mb-3 font-normal text-gray-700 ">
+          <p className={`text-${isDarkMode ? "black" : "white"} mb-3 font-normal text-gray-700 `}>
             Category: {strCategory}
           </p>
           <Link

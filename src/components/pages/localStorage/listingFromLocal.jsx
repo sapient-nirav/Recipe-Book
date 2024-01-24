@@ -23,7 +23,7 @@ const RecipeList = () => {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setRecipes(updatedRecipes);
   };
-  const { isDarkMode, toggleDarkMode } = useTheme();
+  const { isDarkMode } = useTheme();
   return (
     <div
       className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}

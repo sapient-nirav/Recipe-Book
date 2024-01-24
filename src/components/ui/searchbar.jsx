@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 const SearchBar = ({ handleSubmit, query, isLoading, setQuery }) => {
   
-  const { isDarkMode, toggleDarkMode } = useTheme();
+  const { isDarkMode } = useTheme();
   return (
     <form onSubmit={handleSubmit} className={`bg-${isDarkMode ? "gray-800" : "black"} `}>
       <input
