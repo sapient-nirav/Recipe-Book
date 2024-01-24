@@ -55,7 +55,7 @@ const Home = () => {
         setQuery={setQuery}
         handleSubmit={handleSubmit}
       />
-      <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}>
+      <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "white" : "black"} shadow-2xl`}>
         {!isLoading && recipe.length > 0 ? (
           recipe.map((item, index) => (
             <RecipeCard key={item.idMeal} recipe={item} />

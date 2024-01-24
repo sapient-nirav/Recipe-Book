@@ -26,7 +26,7 @@ const RecipeList = () => {
   const { isDarkMode } = useTheme();
   return (
     <div
-      className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}
+      className={`flex flex-wrap mx-16 bg-${isDarkMode ? "white" : "black"} shadow-2xl`}
     >
       {recipes.length > 0 ? (
         recipes.map((item, index) => (

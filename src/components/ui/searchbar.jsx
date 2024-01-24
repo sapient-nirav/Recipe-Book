@@ -5,10 +5,10 @@ const SearchBar = ({ handleSubmit, query, isLoading, setQuery }) => {
   
   const { isDarkMode } = useTheme();
   return (
-    <form onSubmit={handleSubmit} className={`bg-${isDarkMode ? "gray-800" : "black"} `}>
+    <form onSubmit={handleSubmit} className={`bg-${isDarkMode ? "white" : "black"} `}>
       <input
         value={query}
-        className={`shadow-md border rounded w-full  py-2 px-3  bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl text-${isDarkMode ? "black" : "white"}`}
+        className={`shadow-md border rounded w-full  py-2 px-3  bg-${isDarkMode ? "white" : "black"} shadow-2xl text-${isDarkMode ? "black" : "white"}`}
         placeholder="Search Recipe Here"
         name="query"
         disabled={isLoading}

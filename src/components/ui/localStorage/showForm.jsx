@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "../../../context/ThemeContext";
 
 const ShowForm = ({
   showForm,
@@ -6,11 +7,16 @@ const ShowForm = ({
   formData,
   handleInputChange,
   handleFormSubmit,
-  recipe
+  recipe,
 }) => {
+  const { isDarkMode } = useTheme();
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
-      <form className="relative mt-4 space-y-4 shadow-xl p-5 bg-slate-50 rounded-md max-w-2xl w-[700px]">
+      <form
+        className={`bg-${
+          isDarkMode ? "white" : "black"
+        } relative mt-4 space-y-4 shadow-xl p-5  rounded-md max-w-2xl w-[700px] border-2`}
+      >
         <button
           type="button"
           className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-2xl font-extrabold"
@@ -19,7 +25,9 @@ const ShowForm = ({
           ✕
         </button>
         <div className="flex flex-col">
-          <label className="text-lg font-semibold mb-1" htmlFor="id">
+          <label className={`text-lg font-semibold mb-1 text-${
+                    isDarkMode ? "black" : "white"
+                  }`} htmlFor="id">
             Id
           </label>
           <input
@@ -30,7 +38,9 @@ const ShowForm = ({
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-lg font-semibold mb-1" htmlFor="name">
+          <label className={`text-${
+                    isDarkMode ? "black" : "white"
+                  } text-lg font-semibold mb-1`} htmlFor="name">
             Name:
           </label>
           <input
@@ -43,7 +53,9 @@ const ShowForm = ({
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-lg font-semibold mb-1" htmlFor="ingredients">
+          <label className={`text-${
+                    isDarkMode ? "black" : "white"
+                  } text-lg font-semibold mb-1`} htmlFor="ingredients">
             Ingredients:
           </label>
           <textarea
@@ -57,7 +69,9 @@ const ShowForm = ({
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-lg font-semibold mb-1" htmlFor="instructions">
+          <label className={`text-${
+                    isDarkMode ? "black" : "white"
+                  } text-lg font-semibold mb-1`} htmlFor="instructions">
             Instructions:
           </label>
           <textarea
@@ -71,7 +85,9 @@ const ShowForm = ({
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-lg font-semibold mb-1" htmlFor="youtubeLink">
+          <label className={`text-${
+                    isDarkMode ? "black" : "white"
+                  } text-lg font-semibold mb-1`} htmlFor="youtubeLink">
             YouTube Link:
           </label>
           <input
@@ -84,7 +100,9 @@ const ShowForm = ({
           />
         </div>
         <div className="flex flex-col">
-          <label className="text-lg font-semibold mb-1" htmlFor="imageLink">
+          <label className={` text-${
+                    isDarkMode ? "black" : "white"
+                  } text-lg font-semibold mb-1`} htmlFor="imageLink">
             Image Link:
           </label>
           <input

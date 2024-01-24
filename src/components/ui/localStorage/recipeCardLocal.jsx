@@ -84,7 +84,7 @@ const RecipeCardLocal = (props) => {
             <h5 className={`mb-2 text-2xl font-bold text-gray-900 text-${isDarkMode ? "black" : "white"}`}>
               Name: {name}
             </h5>
-            <p className={`text-${isDarkMode ? "black" : "white"} mb-3 font-normal text-gray-700 `}>
+            <p className={`text-${isDarkMode ? "black" : "white"} mb-3 font-normal  `}>
               Category: {category}
             </p>
           </Link>

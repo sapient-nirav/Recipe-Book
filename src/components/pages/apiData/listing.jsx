@@ -42,7 +42,7 @@ const Listing = () => {
   const { isDarkMode } = useTheme();
   return (
     <div>
-      <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "gray-800" : "black"} shadow-2xl`}>
+      <div className={`flex flex-wrap mx-16 bg-${isDarkMode ? "white" : "black"} shadow-2xl`}>
         {recipe
           ? recipe.map((item, index) => (
               <RecipeCard key={item.idMeal} recipe={item} />

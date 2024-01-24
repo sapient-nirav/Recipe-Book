@@ -34,18 +34,24 @@ const Navbar = (props) => {
     <div className="App">
       <nav
         className={`flex justify-between items-center text-xl border-gray-200 bg-${
-          isDarkMode ? "gray-800" : "black"
+          isDarkMode ? "white" : "black"
         } shadow-lg p-4`}
       >
         <Link to="/" className="ml-5">
           <img src={logo} alt="logo" className="w-14 rounded-full" />
         </Link>
-        <div className={`p-4 bg-${isDarkMode ? "gray-800" : "black"}`}>
-          <ul className={`flex flex-row font-medium rounded-lg bg-gray-50 bg-${isDarkMode ? "gray-800" : "black"}`}>
+        <div className={`p-4 bg-${isDarkMode ? "white" : "black"}`}>
+          <ul
+            className={`flex flex-row font-medium rounded-lg  bg-${
+              isDarkMode ? "white" : "black"
+            }`}
+          >
             <li>
               <Link
                 to="/"
-                className={`block mx-5 py-2 md:p-0 md:hover:text-blue-700 `}
+                className={`block mx-5 py-2 md:p-0 md:hover:text-blue-700 text-${
+                  isDarkMode ? "black" : "white"
+                }`}
                 aria-current="page"
               >
                 Home
@@ -54,7 +60,9 @@ const Navbar = (props) => {
             <li>
               <Link
                 to="/listings"
-                className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700"
+                className={`block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-${
+                  isDarkMode ? "black" : "white"
+                }`}
               >
                 Listings API
               </Link>
@@ -62,7 +70,9 @@ const Navbar = (props) => {
             <li>
               <Link
                 to="/listings-local"
-                className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700"
+                className={`block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-${
+                  isDarkMode ? "black" : "white"
+                }`}
               >
                 Listing Local
               </Link>
@@ -71,7 +81,9 @@ const Navbar = (props) => {
               <li>
                 <Link
                   to="/add-recipe"
-                  className="block py-2 mx-5 md:p-0 text-gray-900 rounded hover:text-blue-700"
+                  className={`block py-2 mx-5 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-${
+                    isDarkMode ? "black" : "white"
+                  }`}
                 >
                   +Add New Recipe
                 </Link>
@@ -82,12 +94,12 @@ const Navbar = (props) => {
 
         <div className="relative">
           <button
-            className={`rounded-md mx-2 px-4 py-2 text-${
-              isDarkMode ? "black" : "white"
-            } font-medium`}
+            className={`p-2 rounded-full ${
+              isDarkMode ? "bg-gray-500 text-white" : "bg-yellow-200 text-black"
+            }`}
             onClick={toggleDarkMode}
           >
-            {isDarkMode ? "Light" : "Dark"}
+            {isDarkMode ? "☀️" : "🌙"}
           </button>
           <button
             className={`rounded-md mx-2 px-4 py-2 text-${
@@ -102,9 +114,7 @@ const Navbar = (props) => {
               {isLoggedIn ? (
                 <Link
                   to="/listings-local"
-                  className={`block px-4 py-2 text-gray-900 hover:bg-${
-                    isDarkMode ? "gray-700" : "gray-500"
-                  } hover:text-white font-medium hover:rounded-lg`}
+                  className={`block px-4 py-2 text-gray-900  font-medium hover:rounded-lg`}
                   onClick={handleLogout}
                 >
                   Logout
@@ -120,9 +130,7 @@ const Navbar = (props) => {
                   </Link>
                   <Link
                     to="/login"
-                    className={`block px-4 py-2 text-gray-900 hover:bg-${
-                      isDarkMode ? "gray-700" : "gray-500"
-                    } hover:text-white font-medium hover:rounded-lg`}
+                    className={`block px-4 py-2 text-gray-900 hover:bg-gray-500 hover:font-medium hover:rounded-lg`}
                     onClick={toggleDropdown}
                   >
                     Login

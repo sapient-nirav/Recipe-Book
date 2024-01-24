@@ -89,13 +89,19 @@ const AddNewRecipe = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={`bg-${isDarkMode ? "white" : "black"} shadow-2xl`}>
-      <div className={`container mx-auto `}>
-        <form className="max-w-xl mx-auto shadow-lg p-8 bg-slate-100 rounded-lg">
+    <div className={`bg-${isDarkMode ? "white" : "black"} `}>
+      <div className={`container mx-auto`}>
+        <form
+          className={`max-w-xl  mx-auto shadow-lg border-2 p-8 rounded-lg bg-${
+            isDarkMode ? "white" : "black"
+          }`}
+        >
           <div className="mb-3">
             <label
               htmlFor="name"
-              className="block text-gray-700 text-lg font-bold mb-2"
+              className={`block text-gray-700 text-lg font-bold mb-2 text-${
+                isDarkMode ? "black" : "white"
+              }`}
             >
               Name
             </label>
@@ -120,7 +126,9 @@ const AddNewRecipe = () => {
           <div className="mb-3">
             <label
               htmlFor="category"
-              className="block text-gray-700 text-lg font-bold mb-2"
+              className={`block text-gray-700 text-lg font-bold mb-2 text-${
+                isDarkMode ? "black" : "white"
+              }`}
             >
               Category{" "}
             </label>
@@ -152,7 +160,9 @@ const AddNewRecipe = () => {
           <div className="mb-3">
             <label
               htmlFor="ingredients"
-              className="block text-gray-700 text-lg font-bold mb-2"
+              className={`block text-gray-700 text-lg font-bold mb-2 text-${
+                isDarkMode ? "black" : "white"
+              }`}
             >
               Ingredients
             </label>
@@ -177,7 +187,9 @@ const AddNewRecipe = () => {
           <div className="mb-3">
             <label
               htmlFor="instructions"
-              className="block text-gray-700 text-lg font-bold mb-2"
+              className={`block text-gray-700 text-lg font-bold mb-2 text-${
+                isDarkMode ? "black" : "white"
+              }`}
             >
               Instructions
             </label>
@@ -202,7 +214,9 @@ const AddNewRecipe = () => {
           <div className="mb-3">
             <label
               htmlFor="youtubeLink"
-              className="block text-gray-700 text-lg font-bold mb-2"
+              className={` text-${
+                isDarkMode ? "black" : "white"
+              }block text-gray-700 text-lg font-bold mb-2`}
             >
               YouTube Link
             </label>
@@ -226,7 +240,9 @@ const AddNewRecipe = () => {
           <div className="mb-3">
             <label
               htmlFor="imageLink"
-              className="block text-gray-700 text-lg font-bold mb-2"
+              className={`block text-gray-700 text-lg font-bold mb-2 text-${
+                isDarkMode ? "black" : "white"
+              }`}
             >
               Image Link
             </label>
