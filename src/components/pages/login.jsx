@@ -103,7 +103,9 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
                 value={formData.email}
                 placeholder="Enter your email"
                 onChange={handleChange}
-                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                className={`mt-1 ${
+                  isDarkMode ? "bg-white text-black" : "text-white bg-black"
+                }  p-2 border w-full rounded-md placeholder:italic ${
                   errors.email && "border-red-500"
                 }`}
               />
@@ -125,7 +127,9 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
                 value={formData.password}
                 placeholder="Enter your password"
                 onChange={handleChange}
-                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                className={`mt-1 ${
+                  isDarkMode ? "bg-white text-black" : "text-white bg-black"
+                } p-2 border w-full rounded-md placeholder:italic ${
                   errors.password && "border-red-500"
                 }`}
               />

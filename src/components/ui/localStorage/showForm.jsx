@@ -11,7 +11,7 @@ const ShowForm = ({
 }) => {
   const { isDarkMode } = useTheme();
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
+    <div className="fixed top-9 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
       <form
         className={`bg-${
           isDarkMode ? "white" : "black"
@@ -25,22 +25,30 @@ const ShowForm = ({
           ✕
         </button>
         <div className="flex flex-col">
-          <label className={`text-lg font-semibold mb-1 text-${
-                    isDarkMode ? "black" : "white"
-                  }`} htmlFor="id">
+          <label
+            className={`text-lg font-semibold mb-1 text-${
+              isDarkMode ? "black" : "white"
+            }`}
+            htmlFor="id"
+          >
             Id
           </label>
           <input
             type="text"
             readOnly
             value={recipe.id}
-            className="border bg-slate-100 border-gray-300 p-2 rounded-md"
+            className={`${
+              isDarkMode ? "bg-white text-black" : "text-white bg-black"
+            } border border-gray-300 p-2 rounded-md`}
           />
         </div>
         <div className="flex flex-col">
-          <label className={`text-${
-                    isDarkMode ? "black" : "white"
-                  } text-lg font-semibold mb-1`} htmlFor="name">
+          <label
+            className={`text-${
+              isDarkMode ? "black" : "white"
+            } text-lg font-semibold mb-1`}
+            htmlFor="name"
+          >
             Name:
           </label>
           <input
@@ -49,13 +57,18 @@ const ShowForm = ({
             name="name"
             value={formData.name || ""}
             onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md"
+            className={`${
+              isDarkMode ? "bg-white text-black" : "text-white bg-black"
+            } border border-gray-300 p-2 rounded-md`}
           />
         </div>
         <div className="flex flex-col">
-          <label className={`text-${
-                    isDarkMode ? "black" : "white"
-                  } text-lg font-semibold mb-1`} htmlFor="ingredients">
+          <label
+            className={`text-${
+              isDarkMode ? "black" : "white"
+            } text-lg font-semibold mb-1`}
+            htmlFor="ingredients"
+          >
             Ingredients:
           </label>
           <textarea
@@ -65,13 +78,18 @@ const ShowForm = ({
             rows="5"
             value={formData.ingredients || ""}
             onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md"
+            className={`${
+              isDarkMode ? "bg-white text-black" : "text-white bg-black"
+            } border border-gray-300 p-2 rounded-md`}
           />
         </div>
         <div className="flex flex-col">
-          <label className={`text-${
-                    isDarkMode ? "black" : "white"
-                  } text-lg font-semibold mb-1`} htmlFor="instructions">
+          <label
+            className={`text-${
+              isDarkMode ? "black" : "white"
+            } text-lg font-semibold mb-1`}
+            htmlFor="instructions"
+          >
             Instructions:
           </label>
           <textarea
@@ -81,13 +99,18 @@ const ShowForm = ({
             rows="5"
             value={formData.instructions || ""}
             onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md"
+            className={`${
+              isDarkMode ? "bg-white text-black" : "text-white bg-black"
+            } border border-gray-300 p-2 rounded-md`}
           />
         </div>
         <div className="flex flex-col">
-          <label className={`text-${
-                    isDarkMode ? "black" : "white"
-                  } text-lg font-semibold mb-1`} htmlFor="youtubeLink">
+          <label
+            className={`text-${
+              isDarkMode ? "black" : "white"
+            } text-lg font-semibold mb-1`}
+            htmlFor="youtubeLink"
+          >
             YouTube Link:
           </label>
           <input
@@ -96,13 +119,18 @@ const ShowForm = ({
             name="youtubeLink"
             value={formData.youtubeLink || ""}
             onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md"
+            className={`${
+              isDarkMode ? "bg-white text-black" : "text-white bg-black"
+            } border border-gray-300 p-2 rounded-md`}
           />
         </div>
         <div className="flex flex-col">
-          <label className={` text-${
-                    isDarkMode ? "black" : "white"
-                  } text-lg font-semibold mb-1`} htmlFor="imageLink">
+          <label
+            className={` text-${
+              isDarkMode ? "black" : "white"
+            } text-lg font-semibold mb-1`}
+            htmlFor="imageLink"
+          >
             Image Link:
           </label>
           <input
@@ -111,7 +139,9 @@ const ShowForm = ({
             name="imageLink"
             value={formData.imageLink || ""}
             onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md"
+            className={`${
+              isDarkMode ? "bg-white text-black" : "text-white bg-black"
+            } border border-gray-300 p-2 rounded-md`}
           />
         </div>
         <button

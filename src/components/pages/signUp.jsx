@@ -115,7 +115,9 @@ const RegistrationForm = () => {
                 value={formData.username}
                 placeholder="Enter your username"
                 onChange={handleChange}
-                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                className={`mt-1 ${
+                  isDarkMode ? "bg-white text-black" : "text-white bg-black"
+                } p-2 border w-full rounded-md placeholder:italic ${
                   errors.username && "border-red-500"
                 }`}
               />
@@ -139,7 +141,9 @@ const RegistrationForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                className={`mt-1 ${
+                  isDarkMode ? "bg-white text-black" : "text-white bg-black"
+                } p-2 border w-full rounded-md placeholder:italic ${
                   errors.email && "border-red-500"
                 }`}
               />
@@ -161,7 +165,9 @@ const RegistrationForm = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
-                className={`mt-1 p-2 border w-full rounded-md placeholder:italic ${
+                className={`mt-1 ${
+                  isDarkMode ? "bg-white text-black" : "text-white bg-black"
+                } p-2 border w-full rounded-md placeholder:italic ${
                   errors.password && "border-red-500"
                 }`}
               />
