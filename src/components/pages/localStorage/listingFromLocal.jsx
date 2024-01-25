@@ -4,6 +4,7 @@ import { useTheme } from "../../../context/ThemeContext";
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
+  const { isDarkMode } = useTheme();
   useEffect(() => {
     const storedRecipes = localStorage.getItem("recipes");
     if (storedRecipes) {
@@ -23,9 +24,8 @@ const RecipeList = () => {
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
     setRecipes(updatedRecipes);
   };
-  const { isDarkMode } = useTheme();
   return (
-    <div className={`bg-${isDarkMode ? 'white':'black'}`}>
+    <div className={`bg-${isDarkMode ? "white" : "black"}`}>
       <div
         className={`flex flex-wrap mx-16 bg-${
           isDarkMode ? "white" : "black"

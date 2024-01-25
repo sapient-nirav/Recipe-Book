@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/3.jpg";
+import logo from "../../assets/login.jpg";
 import { useTheme } from "../../context/ThemeContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = ({ onLoginStatusChange, setLoggedIn }) => {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
   const [errors, setErrors] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
 
-  const { isDarkMode } = useTheme();
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -111,7 +115,7 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
               />
               <div className="text-red-500 text-sm italic">{errors.email}</div>
             </div>{" "}
-            <div className="mb-4">
+            <div className="mb-4 relative">
               <label
                 htmlFor="password"
                 className={`block text-${
@@ -121,7 +125,7 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
                 Password
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
@@ -133,6 +137,12 @@ const Login = ({ onLoginStatusChange, setLoggedIn }) => {
                   errors.password && "border-red-500"
                 }`}
               />
+              <div
+                onClick={togglePasswordVisibility}
+                className={`absolute inset-y-0 right-0 top-6 pr-3 flex items-center my-auto cursor-pointer`}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
               <div className="text-red-500 text-sm italic">
                 {errors.password}
               </div>

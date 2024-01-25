@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/2.jpg";
+import logo from "../../assets/signup.jpg";
 import { useTheme } from "../../context/ThemeContext";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -76,7 +77,6 @@ const RegistrationForm = () => {
       }
     }
   };
-  const { isDarkMode } = useTheme();
 
   return (
     <div className={` bg-${isDarkMode ? "slate-500" : "black"}`}>

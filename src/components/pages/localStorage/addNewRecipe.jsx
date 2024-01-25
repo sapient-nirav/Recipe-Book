@@ -89,8 +89,8 @@ const AddNewRecipe = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={`bg-${isDarkMode ? "white" : "black"} `}>
-      <div className={`container mx-auto`}>
+    <div className={`bg-${isDarkMode ? "white" : "black"} h-full w-full`}>
+      <div className={`container mx-auto h-[860px]`}>
         <form
           className={`max-w-xl  mx-auto shadow-lg border-2 p-8 rounded-lg bg-${
             isDarkMode ? "white" : "black"
@@ -112,7 +112,9 @@ const AddNewRecipe = () => {
               value={recipe.name}
               onChange={handleInputChange}
               type="text"
-              className={`border  w-full py-2 px-3 rounded-lg ${
+              className={` ${
+                isDarkMode ? "bg-white text-black" : "text-white bg-black"
+              } border  w-full py-2 px-3 rounded-lg ${
                 errors.name ? "border-rose-500" : ""
               }`}
             />
@@ -137,7 +139,9 @@ const AddNewRecipe = () => {
               id="category"
               value={recipe.category}
               onChange={handleInputChange}
-              className={`border  w-full py-2 px-3 rounded-lg ${
+              className={`border ${
+                isDarkMode ? "bg-white text-black" : "text-white bg-black"
+              }  w-full py-2 px-3 rounded-lg ${
                 errors.category ? "border-rose-500" : ""
               }`}
             >
@@ -145,7 +149,9 @@ const AddNewRecipe = () => {
                 <option
                   key={category.value}
                   value={category.value}
-                  className="border rounded p-2 hover:bg-gray-50 focus:bg-gray-50"
+                  className={`${
+                    isDarkMode ? "bg-white text-black" : "text-white bg-black"
+                  } border rounded p-2 hover:bg-gray-50 focus:bg-gray-50`}
                 >
                   {category.label}
                 </option>
@@ -170,7 +176,9 @@ const AddNewRecipe = () => {
               name="ingredients"
               id="ingredients"
               placeholder="Recipe Ingredients"
-              className={` border rounded-lg w-full py-2 px-3  ${
+              className={`${
+                isDarkMode ? "bg-white text-black" : "text-white bg-black"
+              } border rounded-lg w-full py-2 px-3  ${
                 errors.ingredients ? "border-rose-500" : ""
               }`}
               cols="30"
@@ -199,7 +207,9 @@ const AddNewRecipe = () => {
               cols="30"
               rows="3"
               placeholder="Recipe Instructions"
-              className={` border rounded-lg w-full py-2 px-3  ${
+              className={`${
+                isDarkMode ? "bg-white text-black" : "text-white bg-black"
+              } border rounded-lg w-full py-2 px-3  ${
                 errors.instructions ? "border-rose-500" : ""
               }`}
               value={recipe.instructions}
@@ -227,7 +237,9 @@ const AddNewRecipe = () => {
               value={recipe.youtubeLink}
               onChange={handleInputChange}
               type="text"
-              className={`border rounded-lg w-full py-2 px-3 ${
+              className={`${
+                isDarkMode ? "bg-white text-black" : "text-white bg-black"
+              } border rounded-lg w-full py-2 px-3 ${
                 errors.youtubeLink ? "border-rose-500" : ""
               }`}
             />
@@ -253,7 +265,9 @@ const AddNewRecipe = () => {
               value={recipe.imageLink}
               onChange={handleInputChange}
               type="text"
-              className={`border rounded-lg w-full py-2 px-3 ${
+              className={`${
+                isDarkMode ? "bg-white text-black" : "text-white bg-black"
+              } border rounded-lg w-full py-2 px-3 ${
                 errors.imageLink ? "border-rose-500" : ""
               }`}
             />

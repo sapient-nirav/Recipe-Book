@@ -8,6 +8,7 @@ const MealDataLocal = () => {
   const [recipe, setRecipe] = useState({});
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     const storedRecipes = localStorage.getItem("recipes");
@@ -53,13 +54,11 @@ const MealDataLocal = () => {
     }
   };
 
-  const { isDarkMode } = useTheme();
-
   return (
     <div className={`bg-${isDarkMode ? "white" : "black"}`}>
       <div
         className={`bg-${
-          isDarkMode ? "white" : "black" 
+          isDarkMode ? "white" : "black"
         } container shadow-2xl  rounded-xl  mx-auto p-4 md:p-8 lg:p-12 xl:p-16 `}
       >
         {recipe && (
