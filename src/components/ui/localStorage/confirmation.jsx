@@ -3,10 +3,10 @@ import { useTheme } from "../../../context/ThemeContext";
 const Confirm = ({ onConfirm, onCancel }) => {
   const { isDarkMode } = useTheme();
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className={`${isDarkMode ?"bg-black bg-opacity-50" : "bg-white shadow-xl bg-opacity-50"} fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50`}>
       <div className="relative w-full max-w-md mx-auto my-3 sm:max-w-sm">
         <div
-          className={`relative flex flex-col w-full border-0 rounded-lg shadow-lg bg-${
+          className={`relative flex flex-col w-full border-0 rounded-lg shadow-xl bg-${
             isDarkMode ? "white" : "black"
           } `}
         >
