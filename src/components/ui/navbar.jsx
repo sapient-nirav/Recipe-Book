@@ -105,7 +105,7 @@ const Navbar = (props) => {
           <button
             className={`rounded-md mx-2 px-4 py-2 text-${
               isDarkMode ? "black" : "white"
-            } `}
+            } transition-all transform hover:rotate-180 duration-300 ease-out animate-spin`}
             onClick={toggleDropdown}
           >
             <FaCog />
