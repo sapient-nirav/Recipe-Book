@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Confirm from "./confirmation";
 import UpdateForm from "./updateForm";
-import {useTheme} from '../../../context/ThemeContext'
+import { useTheme } from "../../../context/ThemeContext";
 const RecipeCardLocal = (props) => {
   const navigate = useNavigate();
   const { recipe, onDelete, onUpdate } = props;
@@ -71,8 +71,14 @@ const RecipeCardLocal = (props) => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={`flex flex-row sm:flex-col bg-${isDarkMode ? "gray-800" : "black"} shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg`}>
-      <div className={` max-w-sm bg-white border border-gray-200 rounded-lg shadow`}>
+    <div
+      className={`flex flex-row sm:flex-col bg-${
+        isDarkMode ? "gray-800" : "black"
+      } shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-lg`}
+    >
+      <div
+        className={` max-w-sm bg-white border border-gray-200 rounded-lg shadow`}
+      >
         <Link
           to={isLoggedIn ? `/details-local/${id}` : "/login"}
           className="block"
@@ -81,10 +87,18 @@ const RecipeCardLocal = (props) => {
         </Link>
         <div className={`bg-${isDarkMode ? "white" : "black"} p-5`}>
           <Link to={isLoggedIn ? `/details-local/${id}` : "/login"}>
-            <h5 className={`mb-2 text-2xl font-bold text-gray-900 text-${isDarkMode ? "black" : "white"}`}>
+            <h5
+              className={`mb-2 text-2xl font-bold text-gray-900 text-${
+                isDarkMode ? "black" : "white"
+              }`}
+            >
               Name: {name}
             </h5>
-            <p className={`text-${isDarkMode ? "black" : "white"} mb-3 font-normal  `}>
+            <p
+              className={`text-${
+                isDarkMode ? "black" : "white"
+              } mb-3 font-normal  `}
+            >
               Category: {category}
             </p>
           </Link>
