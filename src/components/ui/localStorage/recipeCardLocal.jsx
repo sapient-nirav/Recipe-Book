@@ -74,7 +74,7 @@ const RecipeCardLocal = (props) => {
     <div
       className={`flex flex-row sm:flex-col bg-${
         isDarkMode ? "gray-800" : "black"
-      } shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-lg`}
+      } shadow-amber-100 shadow-2xl mx-6 mt-12 rounded-lg `}
     >
       <div
         className={` max-w-sm bg-white border border-gray-200 rounded-lg shadow`}
