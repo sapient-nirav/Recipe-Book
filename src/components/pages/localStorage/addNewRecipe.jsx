@@ -226,7 +226,7 @@ const AddNewRecipe = () => {
               htmlFor="youtubeLink"
               className={` text-${
                 isDarkMode ? "black" : "white"
-              }block text-gray-700 text-lg font-bold mb-2`}
+              } block text-gray-700 text-lg font-bold mb-2`}
             >
               YouTube Link
             </label>
